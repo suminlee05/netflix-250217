@@ -4,13 +4,21 @@
 const tmdbCommand = "https://api.themoviedb.org/3";
 
 const fetchMovies1 = async () => {
+<<<<<<< HEAD
   const url = `${tmdbCommand}/movie/now_playing?api_key=d2a72e143d40bab7f709c8672b90046b&language=ko-kr&page=1`;
+=======
+  const url = `${tmdbCommand}/movie/now_playing?api_key=680a234b0f0f37ebdd0a2329bb75809a&language=ko-kr&page=1`;
+>>>>>>> 71a3581ae97d16d949e56c677e17ed2c5ed8a75a
   const response = await fetch(url);
   const { results } = await response.json();
   return results;
 };
 const fetchMovies2 = async () => {
+<<<<<<< HEAD
   const url = `${tmdbCommand}/movie/upcoming?api_key=d2a72e143d40bab7f709c8672b90046b&language=ko-kr&page=1`;
+=======
+  const url = `${tmdbCommand}/movie/upcoming?api_key=680a234b0f0f37ebdd0a2329bb75809a&language=ko-kr&page=1`;
+>>>>>>> 71a3581ae97d16d949e56c677e17ed2c5ed8a75a
   const response = await fetch(url);
   const { results } = await response.json();
   return results;
@@ -22,6 +30,7 @@ const getMovies = async () => {
     fetchMovies2(),
   ]);
 
+<<<<<<< HEAD
   const nowplayingUl = document.querySelector(".nowplaying ul");
   const upcomingUl = document.querySelector(".upcoming ul");
   const topratedUl = document.querySelector(".toprated ul");
@@ -76,6 +85,8 @@ const getMovies = async () => {
   });
 
   // mainSlider
+=======
+>>>>>>> 71a3581ae97d16d949e56c677e17ed2c5ed8a75a
   const mainSlider = document.querySelector(".mainSlider");
 
   movies1.forEach((movie) => {
@@ -112,9 +123,16 @@ naviLis.forEach((naviLi) => {
     submenus.forEach((submenu) => {
       submenu.style.maxHeight = "270px";
       submenu.style.opacity = "1";
+<<<<<<< HEAD
       menu_bg.style.maxHeight = "360px";
       menu_bg.style.opacity = "1";
     });
+=======
+      menu_bg.style.maxHeight = "340px";
+      menu_bg.style.opacity = "1";
+    });
+    // console.log(submenus);
+>>>>>>> 71a3581ae97d16d949e56c677e17ed2c5ed8a75a
   });
   naviLi.addEventListener("mouseout", () => {
     const submenus = document.querySelectorAll(".submenu");
@@ -125,6 +143,7 @@ naviLis.forEach((naviLi) => {
       menu_bg.style.maxHeight = "0px";
       menu_bg.style.opacity = "0";
     });
+<<<<<<< HEAD
   });
 });
 
@@ -164,3 +183,8 @@ searchBtn.addEventListener("click", () => {
 close.addEventListener("click", () => {
   modalSearch.classList.remove("active");
 });
+=======
+    // console.log(submenus);
+  });
+});
+>>>>>>> 71a3581ae97d16d949e56c677e17ed2c5ed8a75a

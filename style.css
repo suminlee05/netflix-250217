@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 @import url("./styles/reset.css");
 @import url("./styles/variables.css");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+=======
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url("./styles/reset.css");
+@import url("./styles/variables.css");
+>>>>>>> 71a3581ae97d16d949e56c677e17ed2c5ed8a75a
 
 body {
   background: var(--main-dark-color);
@@ -28,9 +34,15 @@ header {
       }
     }
     .search-box {
+<<<<<<< HEAD
       i {
         font-size: 22px;
         color: var(--main-accent-color);
+=======
+      img {
+        font-size: 22px;
+        color: #f00;
+>>>>>>> 71a3581ae97d16d949e56c677e17ed2c5ed8a75a
         cursor: pointer;
       }
     }
@@ -39,7 +51,11 @@ header {
 
 .menu_bg {
   width: 100%;
+<<<<<<< HEAD
   height: 360px;
+=======
+  height: 380px;
+>>>>>>> 71a3581ae97d16d949e56c677e17ed2c5ed8a75a
   max-height: 0;
   opacity: 0;
   transition: opacity 0.3s ease, max-height 0.3s ease;
@@ -76,17 +92,29 @@ header {
         position: absolute;
         left: 0;
         bottom: 0;
+<<<<<<< HEAD
         width: 0;
+=======
+        width: 0%;
+>>>>>>> 71a3581ae97d16d949e56c677e17ed2c5ed8a75a
         height: 2px;
         background: var(--main-accent-color);
         margin-left: 50%;
         transform-origin: center;
         transform: translateX(-50%);
+<<<<<<< HEAD
         transition: width 0.3s ease-in;
       }
       &:hover {
         color: var(--main-accent-color);
         &:hover::after {
+=======
+        transition: width 0.3s;
+      }
+      &:hover {
+        color: var(--main-accent-color);
+        &::after {
+>>>>>>> 71a3581ae97d16d949e56c677e17ed2c5ed8a75a
           width: 100%;
         }
       }
@@ -104,7 +132,11 @@ header {
         &:hover {
           color: var(--main-accent-color);
           font-weight: bold;
+<<<<<<< HEAD
           /* text-decoration: underline; */
+=======
+          text-decoration: underline;
+>>>>>>> 71a3581ae97d16d949e56c677e17ed2c5ed8a75a
         }
       }
     }
@@ -133,6 +165,7 @@ header {
     }
   }
 }
+<<<<<<< HEAD
 
 .movie {
   width: 100%;
@@ -371,3 +404,5 @@ header {
     }
   }
 }
+=======
+>>>>>>> 71a3581ae97d16d949e56c677e17ed2c5ed8a75a
