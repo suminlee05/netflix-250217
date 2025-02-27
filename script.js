@@ -15,11 +15,18 @@ const fetchMovies2 = async () => {
   const { results } = await response.json();
   return results;
 };
+const fetchMovies3 = async () => {
+  const url = `${tmdbCommand}/movie/top_rated?api_key=d2a72e143d40bab7f709c8672b90046b&language=ko-kr&page=1`;
+  const response = await fetch(url);
+  const { results } = await response.json();
+  return results;
+};
 
 const getMovies = async () => {
-  const [movies1, movies2] = await Promise.all([
+  const [movies1, movies2, movies3] = await Promise.all([
     fetchMovies1(),
     fetchMovies2(),
+    fetchMovies3(),
   ]);
 
   const nowplayingUl = document.querySelector(".nowplaying ul");
@@ -67,6 +74,10 @@ const getMovies = async () => {
     li.append(moviePoster, movieTitle, movieDesc);
     if (category === "nowplaying") {
       nowplayingUl.appendChild(li);
+    } else if (category === "upcoming") {
+      upcomingUl.appendChild(li);
+    } else if (category === "toprated") {
+      topratedUl.appendChild(li);
     }
   };
 
@@ -75,6 +86,103 @@ const getMovies = async () => {
     createElement(movie, index, "nowplaying");
   });
 
+  //upcoming
+  movies2.forEach((movie, index) => {
+    createElement(movie, index, "upcoming");
+  });
+
+  // TopRated
+  movies3.forEach((movie, index) => {
+    createElement(movie, index, "toprated");
+  });
+
+  //moving slide
+  const initializeSlider = (
+    sliderSelector,
+    rightArrowSelector,
+    leftArrowSelector
+  ) => {
+    const slider = document.querySelector(sliderSelector);
+    const slides = slider.querySelectorAll("li");
+    const slidesToShow = 5;
+    const slideWidth = 160;
+    const slideMargin = 25;
+    let currentIndex = 0;
+    let isTransitioning = false;
+
+    const cloneCount = slidesToShow;
+    const firstClones = Array.from(slides)
+      .slice(0, cloneCount)
+      .map((slide) => slide.cloneNode(true));
+    const lastClones = Array.from(slides)
+      .slice(-cloneCount)
+      .map((slide) => slide.cloneNode(true));
+
+    slider.prepend(...lastClones);
+    slider.append(...firstClones);
+    const updateSlider = () => {
+      const offset =
+        -(slideWidth + slideMargin) * (currentIndex + slidesToShow);
+      slider.style.transform = `translateX(${offset}px)`;
+    };
+
+    slider.style.transition = "none";
+    updateSlider();
+
+    document.querySelector(rightArrowSelector).addEventListener("click", () => {
+      if (isTransitioning) return;
+
+      isTransitioning = true;
+      currentIndex += slidesToShow;
+
+      if (currentIndex === slides.length) {
+        slider.style.transition = "transform 0.5s";
+        updateSlider();
+
+        setTimeout(() => {
+          slider.style.transition = "none";
+          currentIndex = 0;
+          updateSlider();
+          isTransitioning = false;
+        }, 500);
+      } else {
+        slider.style.transition = "transform 0.5s";
+        updateSlider();
+        setTimeout(() => (isTransitioning = false), 500);
+      }
+    });
+
+    document.querySelector(leftArrowSelector).addEventListener("click", () => {
+      if (isTransitioning) return;
+
+      isTransitioning = true;
+      currentIndex -= slidesToShow;
+
+      if (currentIndex < 0) {
+        slider.style.transition = "transform 0.5s";
+        updateSlider();
+
+        setTimeout(() => {
+          slider.style.transition = "none";
+          currentIndex = slides.length - slidesToShow;
+          updateSlider();
+          isTransitioning = false;
+        }, 500);
+      } else {
+        slider.style.transition = "transform 0.5s";
+        updateSlider();
+        setTimeout(() => (isTransitioning = false), 500);
+      }
+    });
+  };
+
+  initializeSlider(
+    ".nowplaying ul",
+    "#nowplayingRightArrow",
+    "#nowplayingLeftArrow"
+  );
+  initializeSlider(".upcoming ul", "#upcomingRightArrow", "#upcomingLeftArrow");
+  initializeSlider(".toprated ul", "#topratedRightArrow", "#topratedLeftArrow");
   // mainSlider
   const mainSlider = document.querySelector(".mainSlider");
 

@@ -153,6 +153,7 @@ header {
     ul {
       display: flex;
       gap: 25px;
+      transition: all 0.5s;
       li {
         cursor: pointer;
         .moviePoster {
@@ -208,6 +209,35 @@ header {
           }
         }
       }
+    }
+  }
+  .arrowBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-100%);
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: var(--main-accent-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    &#nowplayingLeftArrow,
+    &#upcomingLeftArrow,
+    &#topratedLeftArrow {
+      left: 0;
+    }
+    &#nowplayingRightArrow,
+    &#upcomingRightArrow,
+    &#topratedRightArrow {
+      right: 0;
+    }
+    &:hover {
+      background: var(--main-light-color);
+      color: var(--main-accent-color);
     }
   }
 }
