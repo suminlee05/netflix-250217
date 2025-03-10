@@ -183,6 +183,26 @@ const getMovies = async () => {
   );
   initializeSlider(".upcoming ul", "#upcomingRightArrow", "#upcomingLeftArrow");
   initializeSlider(".toprated ul", "#topratedRightArrow", "#topratedLeftArrow");
+
+  // Modal Event
+  const movieItems = document.querySelectorAll(".movie li");
+  const movieModal = document.querySelector(".modal-overlay");
+
+  movieItems.forEach((movieItem) => {
+    movieItem.addEventListener("click", () => {
+      // movieModal.innerHTML = "";
+      movieModal.classList.add("active");
+      const id = parseInt(movieItem.className);
+      const category = movieItem.getAttribute("data-category");
+      console.log(category);
+    });
+  });
+
+  const modalClose = document.querySelector(".modal-close");
+  modalClose.addEventListener("click", () => {
+    movieModal.classList.remove("active");
+  });
+
   // mainSlider
   const mainSlider = document.querySelector(".mainSlider");
 

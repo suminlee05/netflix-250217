@@ -9,7 +9,7 @@ body {
 
 .container {
   width: 100%;
-  height: 3000px;
+  height: 100%;
 }
 
 header {
@@ -399,5 +399,41 @@ header {
       justify-content: space-between;
       margin-top: 10px;
     }
+  }
+}
+
+.modal-overlay {
+  width: 100%;
+  height: 100%;
+  border: 10px solid #f00;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  /* display: flex; */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  .modal-bottom {
+    width: 1000px;
+    .modal-trailer {
+      width: 100%;
+      height: 500px;
+      background: #fff;
+    }
+  }
+  .modal-close {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    i {
+      font-size: 30px;
+      cursor: pointer;
+    }
+  }
+  &.active {
+    display: flex;
   }
 }
